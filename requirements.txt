@@ -6,7 +6,7 @@ pandas
 numpy
 pytest-warnings
 scipy
-poisson
+poisson-disc
 math
 ceil
 floor
