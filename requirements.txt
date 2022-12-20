@@ -11,7 +11,6 @@ datetime
 matplotlib
 seaborn
 plotly
-time
 os-sys
 Pillow
 streamlit_option_menu
