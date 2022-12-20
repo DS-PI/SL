@@ -7,9 +7,6 @@ numpy
 pytest-warnings
 scipy
 poisson-disc
-math
-ceil
-floor
 datetime
 matplotlib
 seaborn
