@@ -15,3 +15,4 @@ os-sys
 Pillow
 streamlit_option_menu
 python-time
+pip==22.3.1
