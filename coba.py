@@ -8,6 +8,7 @@ from pandasql import sqldf
 import pyodbc
 import statistics
 import pandas as pd
+import pandasql
 import numpy as np
 # Ignore harmless warnings
 import warnings
