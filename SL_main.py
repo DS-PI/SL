@@ -60,9 +60,9 @@ if selected == "Home":
 
     with hc1:
         st.markdown("Stok Calculation tool merupakan alat analisis untuk mendapatkan perhitungan stok sparepart optimum terkhusus pada sparepart tipe statis. Alat ini digunakan diharapkan dapat meminimasi downtime mesin akibat dari ketidakfungsian sparepart yang kerusakannya tidak terduga.")
-        st.markdown("Penentuan nilai stok optimum berdasarkan perhitungan *proses poisson* dan service level perusahaan.")
-        st.markdown("**Note**: Products included in the Sparepart Slow and Non Moving")
-        st.write("Download User Guide [Click](https://share.streamlit.io/mesmith027/streamlit_webapps/main/MC_pi/streamlit_app.py)")
+        st.markdown("Penentuan nilai stok optimum berdasarkan perhitungan proses poisson dan service level perusahaan.")
+        st.markdown("**Note**: Calculator Uses in Slow and Non Moving SpareParts SAP Data")
+        st.write("Download User Guides [Click](https://drive.google.com/file/d/1khRfuxFKcFNQL4Npz617KqDG0xGrgPLm/view?usp=sharing)")
 
     with hc2:
         st.markdown("![Alt Text](https://media2.giphy.com/media/l46Cy1rHbQ92uuLXa/giphy.gif)")
@@ -98,7 +98,7 @@ elif selected == "Calculator":
             equnr_input = st.selectbox("Select a Equipment:",options= clist3)
             sparepart_input = st.number_input("Jumlah Komponen Terpasang",value =1,min_value=1)
             equipment_input = st.number_input("Jumlah Equipment",max_value=24, min_value=1,value =1)
-            service_levell = st.number_input("Service Level (%)",max_value=100, min_value=1,value =95)
+            service_levell = st.number_input("Service Level (%)",max_value=100, min_value=1,value =98)
 
             ########### filter data untuk perhitungan #############            
             df1 = dataset[(dataset.Anper == werks_input) &(dataset.EQUNR == equnr_input) & (dataset.nama_material == ematn_input)]
@@ -110,14 +110,17 @@ elif selected == "Calculator":
             netpr=netpr.astype(int)
             
             harga_inputt = st.number_input("Harga Sparepart (IDR)",value=netpr, min_value=0)
+            
+            df1["DATAB"]=df1["DATAB"].astype("string")
+            datab=df1.iat[0, 6]
 
-            if equnr_input == "NONE":  
+            if datab == "na":  
                 leadtime = df1.LEADTIME.sum()/30       
                 a =leadtime.astype(int)
                 lt_sparepart = st.number_input("Leadtime (month) ",value = a,min_value=0)
-                lamda = st.number_input("Failure Rate",  format="%.5f")
+                lamda = st.number_input("Failure Rate (λ)",  format="%.5f")
                 lamda_t = (sparepart_input*equipment_input*lt_sparepart*lamda)
-                #st.markdown(f"- SL **{SL}**,**{cdf}**,**{y}**,failure_rate **{failure_rate}** ")
+                #st.markdown(f"- SL **{SL}**,datab **{datab}** ")
             else :
                 leadtime = df1.LEADTIME.sum()
                 a=leadtime.astype(int)
@@ -125,11 +128,11 @@ elif selected == "Calculator":
 
                 mtbf= (((day_operate-GI_count)/(GI_count))*24) 
                 lamda =  1/mtbf          
-                failure_rate2 = st.number_input("Failure Rate",value = lamda,  format="%.5f")
+                failure_rate2 = st.number_input("Failure Rate (λ)",value = lamda,  format="%.5f")
                 lamda_t = (sparepart_input*equipment_input*lt_sparepart2*failure_rate2)
              
-                #st.markdown(f"- SL **{SL}**,**{cdf}**,**{y}**, {mtbf}")
-
+                #st.markdown(f"- SL **{SL}**,datab **{df1.iat[0, 6]}** ")
+                #st.table(df1)
             hitung = st.button("Hitung")
 
         #================================== === Output ==================================================
@@ -168,14 +171,12 @@ elif selected == "Calculator":
                     biaya=harga_inputt*nilai_op
 
                     #equipment valid from
-                    df1["DATAB"]=df1["DATAB"].astype("string")
-                    datab=df1.iat[0, 6]
 
                     #Output
                     new_title = '<b style="font-family:sans-serif; color:Black; font-size: 16px;">Informasi</b>'
                     st.markdown(new_title, unsafe_allow_html=True)
 
-                    if equnr_input == "NONE": 
+                    if datab == "na": 
                         st.markdown(f"- Leadtime (PR-GR) **{round(lt_sparepart)}** Bulan")
                     else: 
                         datab=df1.DATAB
@@ -187,11 +188,11 @@ elif selected == "Calculator":
                     st.markdown(new_title, unsafe_allow_html=True)
 
                     if equnr_input == "NONE":  
-                        st.success(f"Jumlah sparepart optimum yang dibutuhkan dalam satu periode sebanyak **{round(nilai_op)} sparepart**, dengan total biaya **Rp. {round(biaya)}**")
+                        st.success(f"Jumlah stok sparepart optimum sebanyak **{round(nilai_op)} sparepart**, dengan total biaya **Rp. {round(biaya)}**")
                     else:
-                        st.success(f"Jumlah sparepart optimum yang dibutuhkan dalam satu periode sebanyak **{round(nilai_op)} sparepart**, dengan total biaya **Rp. {round(biaya)}**")
-                        st.success(f"Safety Stock adalah **{round(SS)}** sparepart pembulatan dari {round(SS,2)}")
-                        st.success(f"Reorder Point adalah **{round(ROP)}** sparepart pembulatan dari {round(ROP,2)}")   
+                        st.success(f"Jumlah stok sparepart optimum sebanyak **{round(nilai_op)} sparepart**, dengan total biaya **Rp. {round(biaya)}**")
+                        #st.success(f"Safety Stock adalah **{round(SS)}** sparepart pembulatan dari {round(SS,2)}")
+                        #st.success(f"Reorder Point adalah **{round(ROP)}** sparepart pembulatan dari {round(ROP,2)}")   
 
                     #==================  GRAFIK  ======================
                     #Plot
@@ -219,12 +220,13 @@ elif selected == "Calculator":
     with tabSimulasi:
         col1, padding, col2 = st.columns((6,1.5,15))
         with col1:
-            lamda= st.number_input("Failure Rate ",format="%0.5f")
+            lamda= st.number_input("Failure Rate (λ)",format="%0.5f")
             leadtime= st.number_input("Leadtime (Bulan)", min_value=0,value =0)
-            service_level = st.number_input("Service Level (%)",max_value=100, min_value=0,value =96)
+            service_level = st.number_input("Service Level (%)",max_value=100, min_value=0,value =98)
             sparepart_input = st.number_input("Jumlah Komponen Terpasang",max_value=100,value =1,min_value=0)
-            harga_sparepart = st.number_input("Harga Sparepart (IDR)",value =1,min_value=0)
             equipment_input = st.number_input("Jumlah Equipment",max_value=30, min_value=0,value =1)
+            harga_sparepart = st.number_input("Harga Sparepart (IDR)",value =100,min_value=0)
+
             SL=service_level/100
 
             hitungg = st.button("Hitung ✅")           
@@ -275,7 +277,7 @@ elif selected == "Calculator":
 
                 new_title = '<b style="font-family:sans-serif; color:Black; font-size: 16px;">Hasil</b>'
                 st.markdown(new_title, unsafe_allow_html=True)
-                st.success(f"jumlah sparepart optimum yang dibutuhkan dalam satu periode sebanyak **{round(nilai_op) }** sparepart, dengan total biaya RP. {round(biaya)}")
+                st.success(f"Jumlah stok sparepart optimum sebanyak **{round(nilai_op) }** sparepart, dengan total biaya RP. {round(biaya)}")
 
                 #==================  GRAFIK  ======================
                 #Plot
