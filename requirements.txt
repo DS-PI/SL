@@ -18,3 +18,4 @@ python-time
 pip==22.3.1
 pandasql
 sqldf
+streamlit-authenticator
