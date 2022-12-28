@@ -20,4 +20,4 @@ pandasql
 sqldf
 streamlit-authenticator
 stauth
-streamlit-authenticator 0.2.1
+streamlit-authenticator==0.1.5
