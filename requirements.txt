@@ -26,3 +26,4 @@ aggrid
 st_aggrid 
 streamlit-aggrid==0.1.7
 nordigen==1.0.1
+Python==3.4.0
