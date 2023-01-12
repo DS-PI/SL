@@ -1,4 +1,3 @@
-Python==3.5.0
 streamlit==1.16.0
 sqldf
 pyodbc
