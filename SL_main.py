@@ -105,7 +105,15 @@ if authentication_status:
     elif selected == "Dataset":
         st.info('Untuk mengetahui daftar material silahkan cek data dengan menggunakan menu filter', icon="ℹ️")
         dataset2 = pd.read_csv("dataset display.csv")
-        AgGrid(dataset2, height=400, width='100%', reload_data=True)
+        
+        clist1 = dataset2['Anper'].unique()
+        werks_input0 = st.selectbox("Select a Anak Perusahaan:",options= clist1)
+        dataset2 = dataset2[(dataset2["Anper"] == werks_input0)]
+        st.write(dataset2) 
+        clist2 = dataset2['Material'].unique() 
+        ematn_input0 = st.selectbox("Select a Material:",options= clist2,index=0)
+        dataset = dataset2[(dataset2["Material"] == ematn_input0)]
+        st.write(dataset) 
 
     elif selected == "Calculator":
         Simulation1, tabSimulasi = st.tabs(["Simulation - Equipment", "Simulation - Material"])
