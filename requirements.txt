@@ -21,9 +21,4 @@ sqldf
 streamlit-authenticator
 stauth
 streamlit-authenticator==0.1.5
-streamlit-aggrid
-aggrid
-st_aggrid 
-streamlit-aggrid==0.1.7
-nordigen==1.0.1
 
