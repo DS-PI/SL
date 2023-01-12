@@ -6,6 +6,7 @@ import pandas as pd  # pip install pandas openpyxl
 import plotly.express as px  # pip install plotly-express
 import streamlit as st  # pip install streamlit
 import streamlit_authenticator as stauth  # pip install streamlit-authenticator
+from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 
 # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 st.set_page_config(page_title="Stock Calculation Dashboard", page_icon=":bar_chart:", layout="wide")
@@ -103,18 +104,7 @@ if authentication_status:
     elif selected == "Dataset":
         st.info('Untuk mengetahui daftar material silahkan cek data dengan menggunakan menu filter', icon="ℹ️")
         dataset2 = pd.read_csv("dataset display.csv")
-
-        clist1 = dataset2['Anper'].unique()
-        werks_input0 = st.selectbox("Select a Anak Perusahaan:",options= clist1)
-        dataset2 = dataset2[(dataset2["Anper"] == werks_input0)]
-        st.write(dataset2) 
-        clist2 = dataset2['Material'].unique() 
-        ematn_input0 = st.selectbox("Select a Material:",options= clist2,index=0)
-        dataset = dataset2[(dataset2["Material"] == ematn_input0)]
-        st.write(dataset) 
-
-
-
+        AgGrid(dataset2, height=400, width='100%', reload_data=True)
 
     elif selected == "Calculator":
         Simulation1, tabSimulasi = st.tabs(["Simulation - Equipment", "Simulation - Material"])
