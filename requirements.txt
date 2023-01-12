@@ -24,3 +24,4 @@ streamlit-authenticator==0.1.5
 streamlit-aggrid
 aggrid
 st_aggrid 
+protobuf==3.20.1
