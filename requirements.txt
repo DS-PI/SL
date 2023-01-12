@@ -1,3 +1,4 @@
+Python==3.4.0
 streamlit==1.16.0
 sqldf
 pyodbc
@@ -26,4 +27,4 @@ aggrid
 st_aggrid 
 streamlit-aggrid==0.1.7
 nordigen==1.0.1
-Python==3.4.0
+
