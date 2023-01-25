@@ -77,7 +77,7 @@ if authentication_status:
     authenticator.logout("Logout", "sidebar")
     with st.sidebar:
         directory_path = os.path.dirname(__file__)
-        image = Image.open(os.path.join(directory_path, 'logo2.png'))
+        image = Image.open(os.path.join(directory_path, 'test2.png'))
         pad1, pad2, pad3 = st.columns([2,8,1])
 
         with pad2:
