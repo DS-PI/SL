@@ -273,7 +273,7 @@ if authentication_status:
                     st.info('Silahkan lengkapi kolom, tidak boleh bernilai nol', icon="ℹ️")
                 else :
                     #menghitung lamda t
-                    lamda_t=(sparepart_input*equipment_input*leadtime*lamda*12)
+                    lamda_t=(sparepart_input*equipment_input*leadtime*lamda/12)
 
                     #PROCESS POISSON NO LEADTIME
                     k  = np.arange(0, 20) #21 merupakan banyaknya x yang dicoba
