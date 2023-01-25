@@ -78,7 +78,7 @@ if authentication_status:
     with st.sidebar:
         directory_path = os.path.dirname(__file__)
         image = Image.open(os.path.join(directory_path, '42832.png'))
-        pad1, pad2, pad3 = st.columns([3,6,1])
+        pad1, pad2, pad3 = st.columns([2,3,1])
 
         with pad2:
             st.image(image, output_format='png', width=170)
