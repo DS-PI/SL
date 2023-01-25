@@ -94,7 +94,7 @@ if authentication_status:
 
         with hc1:
             st.markdown("Stok Calculation tool merupakan alat analisis untuk mendapatkan perhitungan stok sparepart optimum terkhusus pada sparepart tipe statis. Alat ini digunakan diharapkan dapat meminimasi downtime mesin akibat dari ketidakfungsian sparepart yang kerusakannya tidak terduga.")
-            st.markdown("Penentuan nilai stok optimum berdasarkan service level perusahaan, failure rate sparepart, dan leadtime pengadaan.")
+            st.markdown("Penentuan banyaknya stok sparepart berdasarkan service level, failure rate sparepart, dan leadtime pengadaan.")
             st.markdown("**Note**: Calculator Uses in Slow and Non Moving SpareParts SAP Data")
             st.write("Download User Guides [Click](https://drive.google.com/file/d/1kjZIwnPvYDv5zQHMvhIrQKD_I5nJPJI9/view?usp=sharing)")
 
