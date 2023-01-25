@@ -260,7 +260,7 @@ if authentication_status:
 
                 SL=service_level/100
 
-                hitungg = st.button("Hitung ✅")           
+                hitungg = st.button("Hitung ")           
         
         if hitungg:
             # Perhitungan
