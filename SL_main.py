@@ -76,7 +76,13 @@ if authentication_status:
     #----------------------------- sidebar ----------------------------------
     authenticator.logout("Logout", "sidebar")
     with st.sidebar:
+        directory_path = os.path.dirname(__file__)
+        #image = Image.open(os.path.join(directory_path, '42832.png'))
+        pad1, pad2, pad3 = st.columns([2,8,1])
 
+        with pad2:
+            st.image(image, output_format='png', width=170)
+        #st.image("https://www.pupuk-indonesia.com/assets/img/logo.png", use_column_width="always")
         
         selected = option_menu("", ['Home',"Dataset","Calculator"], 
             icons=['graph', 'graph', 'graph'], menu_icon="cast", default_index=0)
