@@ -308,7 +308,7 @@ if authentication_status:
 
                     new_title = '<b style="font-family:sans-serif; color:Black; font-size: 16px;">Hasil</b>'
                     st.markdown(new_title, unsafe_allow_html=True)
-                    st.success(f"Jumlah stok sparepart optimum sebanyak **{round(nilai_op) }** sparepart, dengan total biaya RP. {round(biaya)}")
+                    st.success(f"Jika service level sebesar {service_level} % stok sparepart optimum disarankan sebanyak **{round(nilai_op) }** sparepart, dengan total biaya Rp. {round(biaya)}")
 
                     #==================  GRAFIK  ======================
                     #Plot
