@@ -331,3 +331,4 @@ if authentication_status:
                             showlegend=True)
                     )
                     st.plotly_chart(fig)
+                    #st.table(data_op1)
