@@ -251,8 +251,9 @@ if authentication_status:
         with tabSimulasi:
             col1, padding, col2 = st.columns((6,1.5,15))
             with col1:
-                lamda= st.number_input("Demand Rate",format="%0.5f")
                 leadtime= st.number_input("Leadtime (Bulan)",format="%0.6f")
+                lamda= st.number_input("Demand Rate",format="%0.5f")
+                
                 service_level = st.number_input("Service Level (%)",max_value=100, min_value=0,value =98)
                 sparepart_input = st.number_input("Jumlah Komponen Terpasang",max_value=100,value =1,min_value=0)
                 equipment_input = st.number_input("Jumlah Equipment",max_value=30, min_value=0,value =1)
