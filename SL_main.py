@@ -74,12 +74,14 @@ if authentication_status:
         #---MENU
         selected = option_menu("", ['Home',"Dataset","Calculator"], 
         icons=['graph', 'graph', 'graph'], menu_icon="cast", default_index=0)
+        
+    st.subheader("Halo,")
     
     # IF HOME
     if selected == "Home":
         directory_path = os.path.dirname(__file__)
         hc1, hc2 = st.columns([4,4])
-        st.subheader("Halo,")
+        
         with hc1:
             st.markdown("Stok Calculation tool merupakan alat analisis untuk mendapatkan perhitungan stok sparepart optimum terkhusus pada sparepart tipe statis. Alat ini digunakan diharapkan dapat meminimasi downtime mesin akibat dari ketidakfungsian sparepart yang kerusakannya tidak terduga.")
             st.markdown("Penentuan banyaknya stok sparepart berdasarkan service level, failure rate sparepart, dan leadtime pengadaan.")
