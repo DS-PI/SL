@@ -212,9 +212,10 @@ if authentication_status:
                     st.markdown(new_title, unsafe_allow_html=True)
 
                     if equnr_input == "NONE":  
-                        st.success(f"Jumlah stok sparepart optimum sebanyak **{round(nilai_op)} sparepart**, dengan total biaya **Rp. {round(biaya)}**")
+                        st.success(f"Jika service level sebesar {service_levell} % disarankan stok sebanyak **{round(nilai_op) }** sparepart, dengan total biaya Rp. {round(biaya)}")
+                        
                     else:
-                        st.success(f"Jumlah stok sparepart optimum sebanyak **{round(nilai_op)} sparepart**, dengan total biaya **Rp. {round(biaya)}**") 
+                        st.success(f"Jika service level sebesar {service_levell} % disarankan stok sebanyak **{round(nilai_op) }** sparepart, dengan total biaya Rp. {round(biaya)}*") 
 
                     #=======  GRAFIK  ==========
                     data_op1 = np.column_stack((k, cdf,y))
