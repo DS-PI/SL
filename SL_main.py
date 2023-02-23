@@ -207,9 +207,10 @@ if authentication_status:
                         datab=df1.DATAB
                         st.markdown(f"- Leadtime (PR-GR) **{round(lt_sparepart2)}** Hari")
                         st.markdown(f"- Eqipment Valid From Date **{df1.iat[0, 6]}**")
+                        st.markdown(f"- mtbf adalah **{mtbf}**")
                     st.markdown(f"- Demand sebanyak **{round(GI_count)}** sparepart")
                     st.markdown(f"- lamda t **{lamda_t}**")
-                    st.markdown(f"- mtbf adalah **{mtbf}**")
+                    
 
                     #Hasil
                     new_title = '<b style="font-family:sans-serif; color:Black; font-size: 16px;">Hasil</b>'
