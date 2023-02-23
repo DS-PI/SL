@@ -208,6 +208,8 @@ if authentication_status:
                         st.markdown(f"- Leadtime (PR-GR) **{round(lt_sparepart2)}** Hari")
                         st.markdown(f"- Eqipment Valid From Date **{df1.iat[0, 6]}**")
                     st.markdown(f"- Demand sebanyak **{round(GI_count)}** sparepart")
+                    st.markdown(f"- lamda t **{lamda_t}**")
+                    st.markdown(f"- mtbf adalah **{mtbf}**")
 
                     #Hasil
                     new_title = '<b style="font-family:sans-serif; color:Black; font-size: 16px;">Hasil</b>'
@@ -218,8 +220,8 @@ if authentication_status:
                         
                     else:
                         st.success(f"Jika service level sebesar {service_levell} % disarankan stok sebanyak **{round(nilai_op) }** sparepart, dengan total biaya Rp. {round(biaya)}*") 
-
-                    #=======  GRAFIK  ==========
+                        
+                                        #=======  GRAFIK  ==========
                     data_op1 = np.column_stack((k, cdf,y))
                     data_op1 = pd.DataFrame(data_op1)
                     data_op1.rename(columns = {0:'Sparepart'}, inplace = True)
