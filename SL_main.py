@@ -299,14 +299,14 @@ if authentication_status:
                     #====== Output =======
                     # Informasi
                     new_title = '<b style="font-family:sans-serif; color:Black; font-size: 16px;">Informasi</b>'
-                    st.markdown(new_title, unsafe_allow_html=True)
-                    st.markdown(f"- Leadtime **{leadtime}** Bulan")
-                    st.markdown(f"- Failure Rate **{lamda}**")
+                        st.markdown(new_title, unsafe_allow_html=True)
+                        st.markdown(f"- Leadtime **{leadtime}** Bulan")
+                        st.markdown(f"- Failure Rate **{lamda}**")
 
-                    # Hasil
-                    new_title = '<b style="font-family:sans-serif; color:Black; font-size: 16px;">Hasil</b>'
-                    st.markdown(new_title, unsafe_allow_html=True)
-                    st.success(f"Jika service level sebesar {service_level} % disarankan stok sebanyak **{round(nilai_op) }** sparepart, dengan total biaya Rp. {round(biaya)}")
+                        # Hasil
+                        new_title = '<b style="font-family:sans-serif; color:Black; font-size: 16px;">Hasil</b>'
+                        st.markdown(new_title, unsafe_allow_html=True)
+                        st.success(f"Jika service level sebesar {service_level} % disarankan stok sebanyak **{round(nilai_op) }** sparepart, dengan total biaya Rp. {round(biaya)}")
 
                     #=============  GRAFIK  =============
                     #Plot
