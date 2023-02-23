@@ -298,7 +298,7 @@ if authentication_status:
 
                     #====== Output =======
                     # Informasi
-                    #new_title = '<b style="font-family:sans-serif; color:Black; font-size: 16px;">Informasi</b>'
+                    new_title = '<b style="font-family:sans-serif; color:Black; font-size: 16px;">Informasi</b>'
                     st.markdown(new_title, unsafe_allow_html=True)
                     st.markdown(f"- Leadtime **{leadtime}** Bulan")
                     st.markdown(f"- Failure Rate **{lamda}**")
