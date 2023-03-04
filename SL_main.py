@@ -141,7 +141,7 @@ if authentication_status:
                 if datab == "na":  
                     leadtime = df1.LEADTIME.sum()/30       
                     a =leadtime.astype(int)
-                    lt_sparepart = st.number_input("Leadtime (month) ", value = a, min_value=0)
+                    lt_sparepart = st.number_input("Leadtime (Bulan)", value = a, min_value=0)
                     lamda = st.number_input("Failure Rate (λ)",  format="%.5f")
 
                     # MDOEL/FORMULA --> materi https://docs.google.com/presentation/d/1NRoo3JaLD6NnSfvdpuX3OEjBxbMEdbo-7RXBzXfyT5o/edit?usp=sharing
