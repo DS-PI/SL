@@ -78,7 +78,7 @@ if authentication_status:
 
     # IF HOME
     if selected == "Home":
-        st.subheader("Halo,")
+        st.subheader("Haloo,")
         directory_path = os.path.dirname(__file__)
         hc1, hc2 = st.columns([4,4])
         
