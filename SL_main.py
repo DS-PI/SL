@@ -75,9 +75,10 @@ if authentication_status:
         selected = option_menu("", ['Home',"Dataset","Calculator"], 
         icons=['graph', 'graph', 'graph'], menu_icon="cast", default_index=0)
         
-    st.subheader("Halo,")
+
     # IF HOME
     if selected == "Home":
+        st.subheader("Halo,")
         directory_path = os.path.dirname(__file__)
         hc1, hc2 = st.columns([4,4])
         
