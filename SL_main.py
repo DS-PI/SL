@@ -312,6 +312,12 @@ if authentication_status:
                     data_op1.rename(columns = {0:'Sparepart'}, inplace = True)
                     data_op1.rename(columns = {1:'Cumulative distribution function'}, inplace = True)
                     data_op1.rename(columns = {2:'SL'}, inplace = True)
+                    data_op2 = data_op1
+                    data_op2["Total Harga"] = data_op1["Sparepart"] * harga_sparepart
+                    data_op2 = data_op2.drop(columns=['SL'])
+                    data_op2.rename(columns = {'CDF':'% CDF'}, inplace = True)
+                    data_op2["% CDF"] =  round((data_op2["% CDF"] * 100), 2)
+                    data_op2["% CDF"]=data_op2["% CDF"].astype('int64')
 
                     fig=px.line(data_op1, x="Sparepart", y="Cumulative distribution function",width=660, height=450, text="Sparepart")
                     fig.update_traces(textposition="top center",name='Qty Sparepart',showlegend=True)
@@ -325,4 +331,4 @@ if authentication_status:
                             showlegend=True)
                     )
                     st.plotly_chart(fig)
-                    st.table(data_op1)
+                    st.table(data_op2)
