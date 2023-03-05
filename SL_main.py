@@ -315,6 +315,7 @@ if authentication_status:
                     data_op2 = data_op1
                     data_op2["Total Harga"] = data_op1["Sparepart"] * harga_sparepart
                     data_op2 = data_op2.drop(columns=['SL'])
+                    data_op2['Sparepart']= data_op2['Sparepart'] + 1
    
 
                     fig=px.line(data_op1, x="Sparepart", y="Cumulative distribution function",width=660, height=450, text="Sparepart")
