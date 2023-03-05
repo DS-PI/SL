@@ -76,7 +76,6 @@ if authentication_status:
         icons=['graph', 'graph', 'graph'], menu_icon="cast", default_index=0)
         
     st.subheader("Halo,")
-    
     # IF HOME
     if selected == "Home":
         directory_path = os.path.dirname(__file__)
@@ -141,7 +140,7 @@ if authentication_status:
                 if datab == "na":  
                     leadtime = df1.LEADTIME.sum()/30       
                     a =leadtime.astype(int)
-                    lt_sparepart = st.number_input("Leadtime (Bulan)", value = a, min_value=0)
+                    lt_sparepart = st.number_input("Leadtime (month) ", value = a, min_value=0)
                     lamda = st.number_input("Failure Rate (λ)",  format="%.5f")
 
                     # MDOEL/FORMULA --> materi https://docs.google.com/presentation/d/1NRoo3JaLD6NnSfvdpuX3OEjBxbMEdbo-7RXBzXfyT5o/edit?usp=sharing
@@ -207,10 +206,7 @@ if authentication_status:
                         datab=df1.DATAB
                         st.markdown(f"- Leadtime (PR-GR) **{round(lt_sparepart2)}** Hari")
                         st.markdown(f"- Eqipment Valid From Date **{df1.iat[0, 6]}**")
-                        st.markdown(f"- mtbf adalah **{mtbf}**")
                     st.markdown(f"- Demand sebanyak **{round(GI_count)}** sparepart")
-                    st.markdown(f"- lamda t **{lamda_t}**")
-                    
 
                     #Hasil
                     new_title = '<b style="font-family:sans-serif; color:Black; font-size: 16px;">Hasil</b>'
@@ -221,8 +217,8 @@ if authentication_status:
                         
                     else:
                         st.success(f"Jika service level sebesar {service_levell} % disarankan stok sebanyak **{round(nilai_op) }** sparepart, dengan total biaya Rp. {round(biaya)}*") 
-                        
-                                        #=======  GRAFIK  ==========
+
+                    #=======  GRAFIK  ==========
                     data_op1 = np.column_stack((k, cdf,y))
                     data_op1 = pd.DataFrame(data_op1)
                     data_op1.rename(columns = {0:'Sparepart'}, inplace = True)
